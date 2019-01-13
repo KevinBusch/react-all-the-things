@@ -16,7 +16,7 @@ export class Topics extends React.Component {
       console.log('Topics render()');
       return (
         <div>
-          <h1>Topics</h1>
+          <h2>Topics</h2>
           <ul>
             {topicRoutes.map(({ name, id }) => (
               <li key={id}>

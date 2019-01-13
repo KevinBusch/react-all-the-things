@@ -17,7 +17,7 @@ export class Topic extends React.Component {
   
       return (
         <div>
-          <h2>{topic.name}</h2>
+          <h3>{topic.name}</h3>
           <p>{topic.description}</p>
   
           <ul>

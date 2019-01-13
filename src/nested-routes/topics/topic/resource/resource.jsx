@@ -16,7 +16,7 @@ export class Resource extends React.Component {
 
     return (
       <div>
-        <h3>{topic.name}</h3>
+        <h4>{topic.name}</h4>
         <p>{topic.description}</p>
         <a href={topic.url}>More info.</a>
       </div>
