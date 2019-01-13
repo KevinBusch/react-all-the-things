@@ -11,12 +11,15 @@ export class Topics extends React.Component {
     componentWillUnmount() {
       console.log('Topics componentWillUnmount');
     }
+    componentDidMount() {
+      console.log('Topics componentDidMount');
+    }
     render() {
       const { match } = this.props;
       console.log('Topics render()');
       return (
         <div>
-          <h2>Topics</h2>
+          <h2>Topics Example</h2>
           <ul>
             {topicRoutes.map(({ name, id }) => (
               <li key={id}>

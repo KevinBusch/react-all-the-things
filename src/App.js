@@ -25,7 +25,7 @@ class App extends React.Component {
             <Route exact path='/' component={Home} />
             <Route path='/hooks' component={HooksExample} />
             <Route path='/nested-routes' component={NestedRoutesExample} />
-            <Route path='/' component={FallThrough} />
+            <Route component={FallThrough} />
           </Switch>
         </div>
       </Router>

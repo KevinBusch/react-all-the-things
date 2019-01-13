@@ -10,6 +10,9 @@ export class Topic extends React.Component {
     componentWillUnmount() {
       console.log('Topic componentWillUnmount');
     }
+    componentDidMount() {
+      console.log('Topic componentDidMount');
+    }
     render() {
       const { match } = this.props;
       console.log('Topic render()');

@@ -8,6 +8,9 @@ export class Resource extends React.Component {
   componentWillUnmount() {
     console.log('Resource componentWillUnmount');
   }
+  componentDidMount() {
+    console.log('Resource componentDidMount');
+  }
   render() {
     console.log('Resource render()');
     const { match } = this.props;

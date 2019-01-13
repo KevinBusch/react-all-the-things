@@ -10,7 +10,7 @@ export class FallThrough extends React.Component {
     render() {
       console.log('FallThrough render()');
       return (
-        <h1>Fall Through</h1>
+        <h1>Fall Through Example</h1>
       )
     }
   };
