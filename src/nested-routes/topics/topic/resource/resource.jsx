@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom'
 import { topicRoutes } from './../../topic-routes';
 
 export class Resource extends React.Component {
@@ -11,6 +10,16 @@ export class Resource extends React.Component {
   }
   render() {
     console.log('Resource render()');
-    return <p>RESOURCE</p>
+    const { match } = this.props;
+    const topic = topicRoutes.find(({ id }) => id === match.params.topicId)
+      .resources.find(({ id }) => id === match.params.subId);
+
+    return (
+      <div>
+        <h3>{topic.name}</h3>
+        <p>{topic.description}</p>
+        <a href={topic.url}>More info.</a>
+      </div>
+    )
   }
 };

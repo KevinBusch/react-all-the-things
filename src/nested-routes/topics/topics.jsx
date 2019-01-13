@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Link,
-  Route // for later
-} from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import { topicRoutes } from './topic-routes';
 import { Topic } from './topic/topic';
 
