@@ -9,12 +9,14 @@ export function HooksExample () {
 
   //#region useState()
   // Generates a new state variable, first being the variable being set and second being the function used to set it, then returns array  
+  console.log("useState(): count()");
   const [count, setCount] = useState(0); // using array destructuring
+  console.log("useState(): name()");
   const [name, setName] = useState('Flavio'); //  using array destructuring
   //#endregion
 
   //#region useEffect()
-  // Used to take place of componentDidMount, componentDidUpdate, and ComopnentDidUnmount.
+  // Used to take place of componentDidMount, componentDidUpdate, and ComponentDidUnmount.
   // Also does this without blocking UI rendering (NEAT!)
 
   // every render
@@ -56,8 +58,24 @@ export function HooksExample () {
 
   //#region useCallback()
 
-  const handleCountClick = useCallback( () => { setCount(count + 1) } );
-  const handleNameClick = useCallback( () => { setName(name === 'Flavio' ? 'Roger' : 'Flavio') } );
+  const handleCountClick = useCallback(() => {
+    console.log("useCallback(): handleCountClick()");
+    setCount(count + 1) 
+  });
+  const handleNameClick = useCallback(() => { 
+    console.log("useCallback(): handleNameClick()");
+    setName(name === 'Flavio' ? 'Roger' : 'Flavio') 
+  });
+
+  //#endregion
+
+  //#region useCustom()
+  // A custom hook is one that is a function that conventionally starts with `use` and can accept an arbitrary # of args and return anything
+  const useMyCustomGetData = () => {
+    // 
+    console.log("useMyCustomGetData");
+    return "";
+  }
 
   //#endregion
 
