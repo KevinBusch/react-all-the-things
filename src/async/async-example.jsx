@@ -21,12 +21,17 @@ export class AsyncExample extends React.Component {
     this.setState({ albums: response.data });
   }
   render() {
-    return <ul>
-      {this.state.albums.map((a, key) => <li key = { key }>
-        <div>UserId: { a.userId }</div>
-        <div>Id: { a.id }</div>
-        <div>Title: { a.title }</div>
-        </li>)}
-    </ul>
+    return <React.Fragment>
+      <h1>
+        Async Example
+      </h1>
+      <ul>
+        {this.state.albums.map((a, key) => <li key = { key }>
+          <div>UserId: { a.userId }</div>
+          <div>Id: { a.id }</div>
+          <div>Title: { a.title }</div>
+          </li>)}
+      </ul>
+    </React.Fragment>
   }
 };
