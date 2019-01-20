@@ -69,13 +69,13 @@ export function HooksExample () {
 
   //#endregion
 
-  //#region useCustom()
-  // A custom hook is one that is a function that conventionally starts with `use` and can accept an arbitrary # of args and return anything
-  const useMyCustomGetData = () => {
-    // 
-    console.log("useMyCustomGetData");
-    return "";
-  }
+  // //#region useCustom()
+  // // A custom hook is one that is a function that conventionally starts with `use` and can accept an arbitrary # of args and return anything
+  // const useMyCustomGetData = () => {
+  //   // 
+  //   console.log("useMyCustomGetData");
+  //   return "";
+  // }
 
   //#endregion
 
