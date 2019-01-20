@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 
 const AuthenticationContext = React.createContext();
 
@@ -6,6 +8,9 @@ const AuthenticationContext = React.createContext();
  * Export the provider here
  */
 export class AuthenticationContextProvider extends Component {
+
+  signal = axios.CancelToken.source();
+
   constructor(props) {
     super(props);
 
@@ -13,10 +18,16 @@ export class AuthenticationContextProvider extends Component {
     this.state = {
         isAuthenticated: true,
         loggedOnUser: { 
-            id:   1, 
-            name: 'Kevin Busch'
+            id:          1, 
+            isLoggingIn: false,
+            name:        'Kevin Busch'
         },
     };
+  }
+
+  componentWillUnmount() {
+    console.log("canceling Api request");
+    this.signal.cancel('Api is being canceled');
   }
 
   logOff = () => {
@@ -26,9 +37,14 @@ export class AuthenticationContextProvider extends Component {
     });
   };
 
-  logOn = (id, name) => {
+  logOn = async (id, name) => {
+    this.setState({
+        isLoggingIn: true,
+    });
+    const response = await axios('https://jsonplaceholder.typicode.com/albums/', { cancelToken: this.signal.token });
     this.setState({
         isAuthenticated: true,
+        isLoggingIn: false,
         loggedOnUser: {
             id:   id,
             name: name,
@@ -41,8 +57,10 @@ export class AuthenticationContextProvider extends Component {
 
     return (
       <AuthenticationContext.Provider
+        // The 'value' property is what is passed down to children components
         value={{
-					isAuthenticated: this.state.isAuthenticated,
+          isAuthenticated: this.state.isAuthenticated,
+          isLoggingIn:     this.state.isLoggingIn,
 					loggedOnUser:    this.state.loggedOnUser,
           logOff:     		 this.logOff,
 					logOn:           this.logOn,
