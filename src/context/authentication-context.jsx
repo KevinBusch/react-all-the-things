@@ -9,6 +9,7 @@ const AuthenticationContext = React.createContext();
  */
 export class AuthenticationContextProvider extends Component {
 
+   // axios removes necessity to have AbortController.  Handles under the hood (but in a backwards compatible way?)
   signal = axios.CancelToken.source();
 
   constructor(props) {
@@ -26,6 +27,7 @@ export class AuthenticationContextProvider extends Component {
   }
 
   componentWillUnmount() {
+    console.log("AuthenticationContextProvider componentWillUnmount!");
     console.log("canceling Api request");
     this.signal.cancel('Api is being canceled');
   }
@@ -41,7 +43,9 @@ export class AuthenticationContextProvider extends Component {
     this.setState({
         isLoggingIn: true,
     });
+    // axios removes necessity to handle response body formatting (unlike fetch)... already returned in `response.data`
     const response = await axios('https://jsonplaceholder.typicode.com/albums/', { cancelToken: this.signal.token });
+    console.log(response.data);
     this.setState({
         isAuthenticated: true,
         isLoggingIn: false,
